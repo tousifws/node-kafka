@@ -9,7 +9,6 @@
     "scripts": {
         "dev": "vite --host",
         "build": "tsc && vite build",
-        "test": "jest",
         "serve": "vite preview",
         "lint": "eslint src/**/*.{ts,tsx}"
     },
