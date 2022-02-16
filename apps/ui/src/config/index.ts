@@ -4,7 +4,7 @@ const env = cleanEnv(process.env, {
     NODE_ENV: str({
         choices: ["development", "test", "production", "staging"],
     }),
-    API_BASE_URL: url({ default: "http://localhost" }),
+    API_BASE_URL: url({ default: "http://localhost:7001" }),
 });
 
 export default {
