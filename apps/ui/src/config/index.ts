@@ -1,14 +1,8 @@
-import { cleanEnv, str, url } from "envalid";
-
-const env = cleanEnv(process.env, {
-    NODE_ENV: str({
-        choices: ["development", "test", "production", "staging"],
-    }),
-    API_BASE_URL: url({ default: "http://localhost:7001" }),
-});
-
 export default {
-    env,
+    env: {
+        API_BASE_URL: process.env.API_BASE_URL,
+        NODE_ENV: process.env.NODE_ENV,
+    },
     graphqlChannels: {
         NEW_POST: "NEW_POST",
     },
