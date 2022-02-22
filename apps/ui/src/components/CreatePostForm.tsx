@@ -15,7 +15,7 @@ export default function MultilineTextFields() {
     const submitPost = () => {
         createPost({ title: value, userName: "Tousif" });
     };
-    console.log(newPost);
+
     return (
         <Box
             component="form"
