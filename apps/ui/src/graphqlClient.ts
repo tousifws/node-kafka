@@ -21,9 +21,9 @@ const client = createClient({
         fetchExchange,
         subscriptionExchange({
             forwardSubscription: (operation) => ({
-                subscribe: (sink) => ({
-                    unsubscribe: wsClient.subscribe(operation, sink),
-                }),
+                subscribe: (sink) => {
+                    return { unsubscribe: wsClient.subscribe(operation, sink) };
+                },
             }),
         }),
     ],

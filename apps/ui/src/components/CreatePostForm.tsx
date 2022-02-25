@@ -6,6 +6,7 @@ import useCreatePost from "@/hooks/useCreatePosts";
 
 export default function MultilineTextFields() {
     const [value, setValue] = React.useState("");
+    const [userName, setUserName] = React.useState("Tousif");
     const [newPost, createPost] = useCreatePost();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +14,10 @@ export default function MultilineTextFields() {
     };
 
     const submitPost = () => {
-        createPost({ title: value, userName: "Tousif" });
+        if (value.length > 2) {
+            createPost({ title: value, userName });
+            setValue("");
+        }
     };
 
     return (
@@ -36,7 +40,12 @@ export default function MultilineTextFields() {
                 onChange={handleChange}
             />
             <div>
-                <Button sx={{ marginTop: "0.5rem" }} onClick={submitPost} variant="contained">
+                <Button
+                    disabled={value.length < 2 && true}
+                    sx={{ marginTop: "0.5rem" }}
+                    onClick={submitPost}
+                    variant="contained"
+                >
                     Submit
                 </Button>
             </div>
