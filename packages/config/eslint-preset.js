@@ -10,4 +10,9 @@ module.exports = {
         },
     ],
     plugins: ["prettier"],
+    settings: {
+        react: {
+            version: "detect",
+        },
+    },
 };
