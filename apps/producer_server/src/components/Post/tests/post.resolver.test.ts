@@ -9,7 +9,7 @@ let request: SuperTest<Test>;
 let app: Application;
 let em: EntityManager<IDatabaseDriver<Connection>>;
 
-describe("Post tests", () => {
+describe("PostResolver tests", () => {
     beforeAll(async () => {
         app = new Application();
         await app.init();
@@ -21,7 +21,7 @@ describe("Post tests", () => {
 
     beforeEach(async () => {
         await clearDatabase(app.orm);
-        await loadFixtures(app.orm);
+        await loadFixtures(em);
     });
 
     afterAll(async () => {
@@ -34,7 +34,7 @@ describe("Post tests", () => {
             .send({
                 query: `query {
                     getPosts {
-                      id title userName
+                      id title userName createdAt
                     }
                   }
                 `,
