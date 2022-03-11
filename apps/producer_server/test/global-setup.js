@@ -2,7 +2,6 @@ const { upAll, exec } = require("docker-compose");
 const { join } = require("path");
 
 module.exports = async () => {
-    const { createKafkaTestHelper } = await import("kafka-test-helper");
     await upAll({
         cwd: join(__dirname),
         log: true,
