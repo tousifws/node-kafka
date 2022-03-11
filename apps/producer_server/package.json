@@ -56,7 +56,6 @@
         "is-ci": "^3.0.1",
         "jest": "^27.5.1",
         "jest-extended": "^2.0.0",
-        "kafka-test-helper": "^1.1.0",
         "pino-pretty": "^7.3.0",
         "supertest": "^6.1.6",
         "ts-eager": "^2.0.2",

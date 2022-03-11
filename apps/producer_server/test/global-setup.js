@@ -1,6 +1,5 @@
 const { upAll, exec } = require("docker-compose");
 const { join } = require("path");
-const { kafkaClient } = require("../src/services/MQService");
 
 module.exports = async () => {
     const { createKafkaTestHelper } = await import("kafka-test-helper");
@@ -12,7 +11,4 @@ module.exports = async () => {
     await exec("database", ["sh", "-c", "until pg_isready ; do sleep 1; done"], {
         cwd: join(__dirname),
     });
-
-    const kafkaTestHelper = await createKafkaTestHelper(kafkaClient);
-    // await kafkaTestHelper.ensureTopicExists();
 };

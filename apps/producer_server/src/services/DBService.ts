@@ -21,5 +21,3 @@ export class DBService {
         return orm;
     }
 }
-
-export default DBService;

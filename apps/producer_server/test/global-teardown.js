@@ -4,6 +4,6 @@ const { down } = require("docker-compose");
 module.exports = async () => {
     // Check if running CI environment
     if (isCI) {
-        await down({ composeOptions: ["--remove-orphans"] });
+        await down({ commandOptions: ["--remove-orphans"] });
     }
 };
