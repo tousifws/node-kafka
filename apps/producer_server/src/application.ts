@@ -39,7 +39,7 @@ export class Application {
 
     public constructor() {
         this.instance = Fastify({
-            logger: { prettyPrint: config.env.isDev, prettifier },
+            logger: config.env.isTest ? false : { prettyPrint: config.env.isDev, prettifier },
             ignoreTrailingSlash: true,
             trustProxy: ["127.0.0.1"],
         });
@@ -54,6 +54,7 @@ export class Application {
         this.orm = await new DBService().init();
         this.kafkaProducer = await new KafkaProducer().init();
 
+        this.server = this.instance.server;
         this.instance.listen(this.appPort, (error) => {
             if (error) {
                 this.orm.close();
@@ -64,6 +65,8 @@ export class Application {
             }
             this.gracefulServer.setReady();
         });
+
+        return this.instance;
     }
 
     private async initializeGraphql() {

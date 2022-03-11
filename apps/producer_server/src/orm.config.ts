@@ -11,6 +11,7 @@ export const ormConfig: Options = {
     port: config.postgres.port,
     type: "postgresql",
     debug: config.env.isDev,
+    schema: "public",
     migrations: {
         path: "./dist/migrations",
         pathTs: "./src/migrations",
