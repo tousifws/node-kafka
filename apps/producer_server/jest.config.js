@@ -5,4 +5,6 @@ module.exports = {
     moduleNameMapper: {
         "^@/(.*)$": "<rootDir>/src/$1",
     },
+    globalSetup: "./test/global-setup.js",
+    globalTeardown: "./test/global-teardown.js",
 };

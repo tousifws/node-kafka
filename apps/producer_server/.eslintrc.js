@@ -1,5 +1,13 @@
 module.exports = {
     ...require("config/eslint-preset"),
+    ignorePatterns: [
+        "**/migrations/*.ts",
+        "dist/*",
+        "**/*.config.js",
+        ".eslintrc.js",
+        "**/global-*.js",
+        "**/*-hook.js",
+    ],
     env: {
         // Your environments (which contains several predefined global variables)
         // browser: true,

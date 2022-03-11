@@ -15,8 +15,8 @@ import Redis from "ioredis";
 
 import { getContext } from "@/utils/interfaces/context.interface";
 import config from "@/config";
-import connectDatabase from "@/connectDatabase";
-import { connectKafkaProducer } from "@/connectKafka";
+import { DBService } from "@/services/DBService";
+import { KafkaProducer } from "@/services/MQService";
 
 const options: Redis.RedisOptions = {
     host: config.env.REDIS_HOST,
@@ -51,13 +51,15 @@ export class Application {
     public async init() {
         this.instance.register(fastifyCors);
         await this.initializeGraphql();
-        this.orm = await connectDatabase();
-        this.kafkaProducer = await connectKafkaProducer();
+        this.orm = await new DBService().init();
+        this.kafkaProducer = await new KafkaProducer().init();
 
         this.instance.listen(this.appPort, (error) => {
             if (error) {
                 this.orm.close();
+                this.kafkaProducer.disconnect();
                 this.instance.log.error(error);
+
                 process.exit(1);
             }
             this.gracefulServer.setReady();

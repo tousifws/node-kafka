@@ -15,7 +15,7 @@ export const loadFixtures = async (orm: MikroORM): Promise<void> => {
                 // Setting temporary id for test purposes
                 user.id = createSimpleUuid(index + 1);
 
-                await orm.em.persist(user);
+                orm.em.persist(user);
                 return user;
             })
         );
