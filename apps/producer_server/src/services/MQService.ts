@@ -1,9 +1,10 @@
-import { Kafka, Producer } from "kafkajs";
+import { Kafka, Producer, logLevel } from "kafkajs";
 import config from "../config";
 
 export const kafkaClient = new Kafka({
     clientId: config.env.KAFKA_CLIENT_ID,
     brokers: config.kafka.hosts,
+    logLevel: logLevel.WARN,
 });
 
 export class KafkaProducer {

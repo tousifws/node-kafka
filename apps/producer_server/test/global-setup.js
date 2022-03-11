@@ -13,5 +13,6 @@ module.exports = async () => {
         cwd: join(__dirname),
     });
 
-    await createKafkaTestHelper(kafkaClient);
+    const kafkaTestHelper = await createKafkaTestHelper(kafkaClient);
+    // await kafkaTestHelper.ensureTopicExists();
 };
