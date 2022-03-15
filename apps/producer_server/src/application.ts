@@ -89,10 +89,14 @@ export class Application {
         });
 
         this.gracefulServer.on(GracefulServer.SHUTTING_DOWN, () => {
+            this.orm.close();
+            this.kafkaProducer.disconnect();
             this.instance.log.warn("Server is shutting down");
         });
 
         this.gracefulServer.on(GracefulServer.SHUTDOWN, (error) => {
+            this.orm.close();
+            this.kafkaProducer.disconnect();
             this.instance.log.error("Server is down because of", error.message);
         });
     }

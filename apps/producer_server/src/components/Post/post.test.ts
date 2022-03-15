@@ -1,5 +1,6 @@
 import { Connection, EntityManager, IDatabaseDriver } from "@mikro-orm/core";
 import supertest, { SuperTest, Test } from "supertest";
+import faker from "@faker-js/faker";
 import Application from "@/application";
 import createSimpleUuid from "@/utils/helpers/createSimpleUuid";
 import { clearDatabase } from "@/utils/helpers/clearDatabase";
@@ -30,7 +31,7 @@ describe("Post tests", () => {
     });
 
     describe("getPosts query", () => {
-        it("should get posts", async () => {
+        it("should get all posts", async () => {
             const response = await request
                 .post("/graphql")
                 .send({
@@ -47,23 +48,41 @@ describe("Post tests", () => {
     });
 
     describe("addPost mutation", () => {
-        it("should create posts", async () => {
+        const addPostMutation = (title: string, userName: string) => `mutation{
+            addPost(input: {
+              title: "${title}",
+              userName: "${userName}"
+            }){
+              id
+              createdAt
+              updatedAt
+              title
+              userName
+            }
+          }
+        `;
+
+        it("should create given post", async () => {
+            const title = faker.lorem.sentences(1);
+            const userName = faker.name.firstName();
+
             const response = await request
                 .post("/graphql")
                 .send({
-                    query: `mutation{
-                        addPost(input: {
-                          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                          userName: "Tousif"
-                        }){
-                          id
-                          createdAt
-                          updatedAt
-                          title
-                          userName
-                        }
-                      }
-                    `,
+                    query: addPostMutation(title, userName),
+                })
+                .expect(200);
+            expect(response.body.data.addPost).toEqual(expect.toBeObject());
+        });
+
+        it("should create posts when given small title", async () => {
+            const title = "Really small title";
+            const userName = faker.name.firstName();
+
+            const response = await request
+                .post("/graphql")
+                .send({
+                    query: addPostMutation(title, userName),
                 })
                 .expect(200);
             expect(response.body.data.addPost).toEqual(expect.toBeObject());
