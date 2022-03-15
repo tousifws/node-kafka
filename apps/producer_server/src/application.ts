@@ -10,23 +10,11 @@ import { Connection, IDatabaseDriver, MikroORM } from "@mikro-orm/core";
 import { GraphQLSchema } from "graphql";
 import { buildSchema } from "type-graphql";
 import { Producer } from "kafkajs";
-import { RedisPubSub } from "graphql-redis-subscriptions";
-import Redis from "ioredis";
 
 import { getContext } from "@/utils/interfaces/context.interface";
 import config from "@/config";
 import { DBService } from "@/services/DBService";
 import { KafkaProducer } from "@/services/MQService";
-
-const options: Redis.RedisOptions = {
-    host: config.env.REDIS_HOST,
-    retryStrategy: (times) => Math.max(times * 100, 3000),
-};
-
-const pubSub = new RedisPubSub({
-    publisher: new Redis(options),
-    subscriber: new Redis(options),
-});
 
 export class Application {
     public instance: FastifyInstance;
@@ -73,7 +61,6 @@ export class Application {
         const schema: GraphQLSchema = await buildSchema({
             resolvers: [`${__dirname}/**/*.resolver.{ts,js}`],
             dateScalarMode: "isoDate",
-            pubSub,
         });
 
         this.instance.register(mercurius, {

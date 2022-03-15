@@ -25,6 +25,7 @@ describe("Post tests", () => {
     });
 
     afterAll(async () => {
+        app.orm.close();
         app.server.close();
     });
 
