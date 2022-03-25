@@ -30,7 +30,7 @@ export class PostResolver {
     })
     public newPosts(@Root() newPost: KafkaMessage): NewPostPayload {
         const post = JSON.parse(newPost.value.toString()) as Post;
-
+        console.log("Inside new subscribe");
         return {
             id: post.id,
             userName: post.userName,
