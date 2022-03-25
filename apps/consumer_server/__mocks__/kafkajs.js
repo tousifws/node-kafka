@@ -61,11 +61,12 @@ kafkajs.Kafka = class Kafka {
 
     _sendCb({ topic, messages }) {
         messages.forEach((message) => {
-            if (this.topics[topic]) {
-                this.topics[topic] = this.topics[topic].concat(message);
-            } else {
-                this.topics[topic] = [message];
-            }
+            Object.values(this.topics[topic]).forEach((consumers) => {
+                const consumerToGetMessage = Math.floor(Math.random() * consumers.length);
+                consumers[consumerToGetMessage].eachMessage({
+                    message,
+                });
+            });
         });
     }
 

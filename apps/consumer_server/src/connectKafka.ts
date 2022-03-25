@@ -32,7 +32,7 @@ export const connectKafkaConsumer = async (
             console.log(response);
             const post = new Post(response);
 
-            await DI.orm.em.persist(post).flush();
+            await DI.em.persist(post).flush();
             await pubsub.publish(config.graphqlChannels.NEW_POST, message.value);
         },
     });
