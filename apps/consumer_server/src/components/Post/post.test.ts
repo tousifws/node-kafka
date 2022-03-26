@@ -3,13 +3,13 @@ import { Connection, EntityManager, IDatabaseDriver } from "@mikro-orm/core";
 import supertest, { SuperTest, Test } from "supertest";
 import faker from "@faker-js/faker";
 import Application from "@/application";
-import { clearDatabase } from "@/utils/helpers/clearDatabase";
-import { loadFixtures } from "@/utils/helpers/loadFixture";
-import { subscribe } from "@/utils/helpers/graphqlWSClient";
 import { KafkaPubSub } from "graphql-kafkajs-subscriptions";
+import gql from "graphql-tag";
+import { clearDatabase, loadFixtures, sleep } from "@/utils/helpers";
+import { createSubscriptionObservable } from "@/utils/helpers/graphqlWSClient";
 import config from "@/config";
 
-const port = 8080;
+const port = faker.internet.port();
 
 let request: SuperTest<Test>;
 let app: Application;
@@ -55,31 +55,37 @@ describe("Post tests", () => {
     });
 
     describe("subscription query", () => {
-        // let client;
-
-        // beforeAll(async () => {
-        //     client = getWSClient(port);
-        // });
         it("should get new posts", async () => {
             const newPost = {
+                id: faker.datatype.uuid(),
                 userName: faker.name.findName(),
                 title: faker.lorem.sentences(2),
+                createdAt: faker.date.recent().toISOString(),
             };
-            const query = `subscription{
-                newPosts{
-                  createdAt
-                  updatedAt
-                  title
-                  userName
+            const query = gql`
+                subscription {
+                    newPosts {
+                        id
+                        createdAt
+                        updatedAt
+                        title
+                        userName
+                    }
                 }
-              }`;
+            `;
+            const posts = [];
+            const client = createSubscriptionObservable(port, query);
 
-            const subscription = subscribe({ query });
-            // console.log(pubSub);
+            const subscription = client.subscribe((event) => {
+                posts.push(event.data.newPosts);
+            });
+            await sleep(500);
             await pubSub.publish(config.graphqlChannels.NEW_POST, JSON.stringify(newPost));
+            await sleep(500);
+
             subscription.unsubscribe();
-            console.log(subscription);
-            // expect(subscription.events.length).toBe(1);
+            expect(posts.length).toBe(1);
+            expect(posts[0]).toMatchObject(newPost);
         });
     });
 });
