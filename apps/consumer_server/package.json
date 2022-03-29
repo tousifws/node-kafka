@@ -48,7 +48,6 @@
         "config": "*",
         "docker-compose": "^0.23.17",
         "eslint": "^8.2.0",
-        "graphql-subscriptions": "^2.0.0",
         "graphql-tag": "^2.12.6",
         "graphql-ws": "^5.6.3",
         "is-ci": "^3.0.1",

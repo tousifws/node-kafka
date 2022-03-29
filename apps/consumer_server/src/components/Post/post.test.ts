@@ -51,6 +51,12 @@ describe("Post tests", () => {
                 })
                 .expect(200);
             expect(response.body.data.getPosts).toEqual(expect.toBeArray());
+            expect(response.body.data.getPosts[0]).toMatchObject({
+                id: expect.toBeString(),
+                title: expect.toBeString(),
+                userName: expect.toBeString(),
+                createdAt: expect.toBeString(),
+            });
         });
     });
 
