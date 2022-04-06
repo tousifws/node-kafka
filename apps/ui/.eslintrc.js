@@ -6,7 +6,7 @@ module.exports = {
         node: true,
         jest: true,
     },
-    ignorePatterns: ["vite-env.d.ts"],
+    ignorePatterns: ["vite-env.d.ts", "cypress/*"],
     parserOptions: {
         root: true,
         tsconfigRootDir: __dirname,

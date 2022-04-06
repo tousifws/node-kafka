@@ -22,12 +22,17 @@ export default function CustomCard() {
         <Grid sx={{ marginTop: "1rem" }} container justifyContent="center" spacing={2}>
             {posts?.map((item, i) => (
                 <Grid item key={i}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card data-test="postCard" sx={{ maxWidth: 345 }}>
                         <CardContent>
-                            <Typography gutterBottom variant="h6" component="div">
+                            <Typography
+                                data-test="postTitle"
+                                gutterBottom
+                                variant="h6"
+                                component="div"
+                            >
                                 {item.title}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography data-test="userName" variant="body2" color="text.secondary">
                                 {item.userName}
                             </Typography>
                         </CardContent>
