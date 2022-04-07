@@ -22,7 +22,7 @@ export default function CustomCard() {
         <Grid sx={{ marginTop: "1rem" }} container justifyContent="center" spacing={2}>
             {posts?.map((item, i) => (
                 <Grid item key={i}>
-                    <Card data-test="postCard" sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }}>
                         <CardContent>
                             <Typography
                                 data-test="postTitle"
