@@ -18,6 +18,6 @@ import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-
+import "@cypress/code-coverage/support";
 import { configure } from "@testing-library/cypress";
 configure({ testIdAttribute: "data-test" });

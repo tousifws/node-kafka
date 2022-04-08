@@ -16,6 +16,7 @@
         "test:ci": "start-server-and-test preview 5000 'cypress run'"
     },
     "devDependencies": {
+        "@cypress/code-coverage": "^3.9.12",
         "@tailwindcss/forms": "^0.4.0",
         "@testing-library/cypress": "^8.0.2",
         "@types/react": "^17.0.38",
