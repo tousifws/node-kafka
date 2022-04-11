@@ -12,6 +12,10 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
+const fs = require("fs");
+const autoRecord = require("cypress-autorecord/plugin");
+const coverage = require("@cypress/code-coverage/task");
+
 /**
  * @type {Cypress.PluginConfig}
  */
@@ -19,7 +23,8 @@
 module.exports = (on, config) => {
     // `on` is used to hook into various events Cypress emits
     // `config` is the resolved Cypress config
-    require("@cypress/code-coverage/task")(on, config);
+    autoRecord(on, config, fs);
+    coverage(on, config);
 
     return config;
 };

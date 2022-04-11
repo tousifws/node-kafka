@@ -1,0 +1,30 @@
+{
+  "Displays list of posts by default": {
+    "timestamp": 1649445713540,
+    "routes": [
+      {
+        "url": "http://localhost:7000/graphql",
+        "method": "POST",
+        "status": 200,
+        "headers": {},
+        "body": {
+          "query": "mutation ($userName: String!, $title: String!) {\n  addPost(input: {userName: $userName, title: $title}) {\n    id\n    userName\n    title\n    __typename\n  }\n}",
+          "variables": {
+            "title": "If you work for an ad agency and getting paid for it aren't you the one who is being influenced by advertising?",
+            "userName": "Tousif"
+          }
+        },
+        "response": {
+          "data": {
+            "addPost": {
+              "id": "518aa478-bd0c-4e15-9af5-92ce56de6405",
+              "userName": "Tousif",
+              "title": "If you work for an ad agency and getting paid for it aren't you the one who is being influenced by advertising?",
+              "__typename": "Post"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

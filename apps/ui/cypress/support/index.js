@@ -16,8 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import "./commands";
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// import "cypress-jest-adapter";
 import "@cypress/code-coverage/support";
 import { configure } from "@testing-library/cypress";
 configure({ testIdAttribute: "data-test" });

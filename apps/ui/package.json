@@ -12,8 +12,10 @@
         "build": "export NODE_ENV=production && tsc && vite build",
         "preview": "vite preview",
         "lint": "eslint src/**/*.{ts,tsx}",
-        "cypress:open": "cypress open",
-        "test:ci": "start-server-and-test preview 5000 'cypress run'"
+        "cy:open": "cypress open --config baseUrl=http://localhost:5000",
+        "test": "start-server-and-test preview 5000 cy:open",
+        "cy:run": "cypress run --config baseUrl=http://localhost:5000",
+        "test:ci": "start-server-and-test preview 5000 cy:run"
     },
     "devDependencies": {
         "@cypress/code-coverage": "^3.9.12",
@@ -25,6 +27,8 @@
         "autoprefixer": "^10.4.2",
         "config": "*",
         "cypress": "^9.5.3",
+        "cypress-autorecord": "^3.1.2",
+        "cypress-jest-adapter": "^0.1.1",
         "eslint": "^8.6.0",
         "postcss": "^8.4.5",
         "start-server-and-test": "^1.14.0",
