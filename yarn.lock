@@ -6646,7 +6646,7 @@ istanbul-lib-hook@^3.0.0:
   dependencies:
     append-transform "^2.0.0"
 
-istanbul-lib-instrument@^4.0.0:
+istanbul-lib-instrument@^4.0.0, istanbul-lib-instrument@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-4.0.3.tgz#873c6fff897450118222774696a3f28902d77c1d"
   integrity sha512-BXgQl9kf4WTCPCCpmFGoJkz/+uhvm7h7PFKUYxh7qarQd3ER33vHG//qaE8eN25l07YqZPpHXU9I09l/RD5aGQ==
@@ -10740,6 +10740,15 @@ vite-plugin-checker@^0.4.2:
     vscode-languageserver "^7.0.0"
     vscode-languageserver-textdocument "^1.0.1"
     vscode-uri "^3.0.2"
+
+vite-plugin-istanbul@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-istanbul/-/vite-plugin-istanbul-2.5.1.tgz#03100d70da69374343ab79676e5f8ceb233fb330"
+  integrity sha512-5ZR2/haQalUXVqHrjatZ0QKxzF3e0hBiJe6VhjGYxE7Yc4WFs7ZE56oazYB4jnPXvlirOvgLxG0LJQoHFdMxMg==
+  dependencies:
+    chalk "^4.1.2"
+    istanbul-lib-instrument "^4.0.3"
+    test-exclude "^6.0.0"
 
 vite-tsconfig-paths@^3.3.17:
   version "3.4.0"
