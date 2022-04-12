@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     ...require("config/eslint-preset"),
     env: {
         // Your environments (which contains several predefined global variables)
