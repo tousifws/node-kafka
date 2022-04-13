@@ -1,4 +1,4 @@
-name: Cypress Tests with Dependency and Artifact Caching
+name: Cypress Tests
 
 on:
     push:
@@ -13,12 +13,6 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
-
-            - name: Download the build folders
-              uses: actions/download-artifact@v2
-              with:
-                  name: build
-                  path: build
 
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
