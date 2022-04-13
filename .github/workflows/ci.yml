@@ -9,7 +9,8 @@ on:
 jobs:
     ci:
         runs-on: ubuntu-latest
-
+        env:
+            BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         strategy:
             matrix:
                 node-version: [16.x]
@@ -39,4 +40,4 @@ jobs:
 
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
-              run: yarn turbo run build --filter=origin/${{ github.base_ref }}
+              run: yarn turbo run build --filter=...[origin/${{ env.BRANCH_NAME }}]
