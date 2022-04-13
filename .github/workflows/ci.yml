@@ -9,8 +9,10 @@ on:
 jobs:
     ci:
         runs-on: ubuntu-latest
+        timeout-minutes: 10
         env:
             BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+            BASE_BRANCH: ${{ github.base_ref }}
         strategy:
             matrix:
                 node-version: [16.x]
@@ -18,7 +20,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
               with:
-                  fetch-depth: 2
+                  fetch-depth: 0
 
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
@@ -40,4 +42,4 @@ jobs:
 
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
-              run: yarn turbo run build
+              run: yarn turbo run build --since=${{ env.BASE_BRANCH }
