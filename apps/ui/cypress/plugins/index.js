@@ -15,6 +15,7 @@
 const fs = require("fs");
 const autoRecord = require("cypress-autorecord/plugin");
 const coverage = require("@cypress/code-coverage/task");
+const { startDevServer } = require("@cypress/vite-dev-server");
 
 /**
  * @type {Cypress.PluginConfig}
@@ -23,6 +24,8 @@ const coverage = require("@cypress/code-coverage/task");
 module.exports = (on, config) => {
     // `on` is used to hook into various events Cypress emits
     // `config` is the resolved Cypress config
+    on("dev-server:start", async (options) => startDevServer({ options }));
+
     autoRecord(on, config, fs);
     coverage(on, config);
 

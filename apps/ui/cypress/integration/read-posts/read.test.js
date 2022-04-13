@@ -12,7 +12,7 @@ describe("Read posts", function () {
     it("Displays list of posts by default", function () {
         cy.wait("@getPosts").its("response.statusCode").should("be.oneOf", [200]);
         cy.findAllByTestId("postTitle").should((element) => {
-            expect(element).to.have.length(28);
+            expect(element.length).toEqual(28);
         });
     });
 });
