@@ -2,9 +2,9 @@ name: Cypress Tests with Dependency and Artifact Caching
 
 on:
     push:
-        paths:
-            - "apps/ui/**"
-            - ".github/workflow/cypress.yaml"
+    # paths:
+    #     - "apps/ui/**"
+    #     - ".github/workflow/cypress.yaml"
 
 jobs:
     cypress-run:
