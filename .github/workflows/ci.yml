@@ -42,4 +42,4 @@ jobs:
 
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
-              run: yarn turbo run build --since=${{ env.BASE_BRANCH }}
+              run: yarn turbo run build --since=origin/${{ env.BASE_BRANCH }}
