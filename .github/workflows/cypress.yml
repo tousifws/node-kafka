@@ -9,10 +9,17 @@ on:
 jobs:
     cypress-run:
         runs-on: ubuntu-latest
+        timeout-minutes: 10
         # container: cypress/browsers:node16.13.2-chrome100-ff98
         steps:
             - name: Checkout
               uses: actions/checkout@v2
+
+            - uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
 
             - name: Cypress run
               uses: cypress-io/github-action@v2
