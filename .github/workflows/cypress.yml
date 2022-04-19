@@ -4,7 +4,7 @@ on:
     push:
         paths:
             - "apps/ui/**"
-            - ".github/workflows/cypress.yaml"
+            - ".github/workflows/cypress.yml"
 
 jobs:
     cypress-run:
