@@ -13,7 +13,7 @@
         "preview": "vite preview --port 3000",
         "lint": "eslint src/**/*.{ts,tsx}",
         "cy:open": "cypress open --config baseUrl=http://localhost:3000",
-        "test": "start-server-and-test preview 5000 cy:open",
+        "test": "start-server-and-test preview 3000 cy:open",
         "cy:run": "cypress run --config baseUrl=http://localhost:3000",
         "test:cy": "start-server-and-test preview 3000 cy:run"
     },
@@ -36,9 +36,9 @@
         "tailwindcss": "^3.0.13",
         "tsconfig": "*",
         "typescript": "^4.5.4",
-        "vite": "^2.7.10",
+        "vite": "^2.9.5",
         "vite-plugin-checker": "^0.4.2",
-        "vite-plugin-istanbul": "^2.5.1",
+        "vite-plugin-istanbul": "^2.7.1",
         "vite-tsconfig-paths": "^3.3.17"
     },
     "dependencies": {
