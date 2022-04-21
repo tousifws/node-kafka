@@ -15,7 +15,9 @@
         "cy:open": "cypress open --config baseUrl=http://localhost:3000",
         "test": "start-server-and-test preview 3000 cy:open",
         "cy:run": "cypress run --config baseUrl=http://localhost:3000",
-        "test:cy": "start-server-and-test preview 3000 cy:run"
+        "test:cy": "start-server-and-test preview 3000 cy:run",
+        "coverage": "npx nyc report --reporter=text",
+        "coverage:summary": "npx nyc report --reporter=text-summary"
     },
     "devDependencies": {
         "@cypress/code-coverage": "^3.9.12",
