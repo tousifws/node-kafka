@@ -44,6 +44,9 @@ jobs:
               if: ${{ github.event_name == 'pull_request' }}
               run: yarn turbo run build --since=origin/${{ env.BASE_BRANCH }}
 
+            - name: List
+              run: ls apps/*
+
             - name: Monitor coverage
               if: ${{ github.event_name == 'pull_request' }}
               uses: slavcodev/coverage-monitor-action@v1
