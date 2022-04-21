@@ -7,7 +7,7 @@ import istanbul from "vite-plugin-istanbul";
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
     build: {
-        sourcemap: "hidden",
+        sourcemap: true,
     },
     define: {
         "process.env": process.env,
@@ -25,7 +25,6 @@ export default defineConfig(() => ({
         istanbul({
             cypress: true,
             include: "src/*",
-            exclude: ["node_modules", "cypress/"],
         }),
     ],
 }));

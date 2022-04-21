@@ -24,16 +24,16 @@ module.exports = (on, config) => {
     // `config` is the resolved Cypress config
     coverage(on, config);
 
-    if (config.testingType === "component") {
-        on("dev-server:start", async (options) =>
-            startDevServer({
-                options,
-                viteConfig: {
-                    configFile: path.resolve(__dirname, "..", "..", "vite.config.ts"),
-                },
-            })
-        );
-    }
+    // if (config.testingType === "component") {
+    on("dev-server:start", async (options) =>
+        startDevServer({
+            options,
+            viteConfig: {
+                configFile: path.resolve(__dirname, "..", "..", "vite.config.ts"),
+            },
+        })
+    );
+    // }
 
     return config;
 };

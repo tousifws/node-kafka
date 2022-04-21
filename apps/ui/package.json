@@ -19,6 +19,7 @@
     },
     "devDependencies": {
         "@cypress/code-coverage": "^3.9.12",
+        "@cypress/react": "^5.12.4",
         "@cypress/vite-dev-server": "^2.2.2",
         "@tailwindcss/forms": "^0.4.0",
         "@testing-library/cypress": "^8.0.2",
