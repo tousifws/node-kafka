@@ -29,6 +29,9 @@ jobs:
                   name: cypress-screenshots
                   path: cypress/screenshots
 
+            - name: List
+              run: ls apps/ui/*
+
             - name: Monitor coverage
               uses: slavcodev/coverage-monitor-action@v1
               with:
