@@ -43,3 +43,10 @@ jobs:
             - name: Lint, test and build (pull request)
               if: ${{ github.event_name == 'pull_request' }}
               run: yarn turbo run build --since=origin/${{ env.BASE_BRANCH }}
+
+            - name: Monitor coverage
+              uses: slavcodev/coverage-monitor-action@v1
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  coverage_path: "apps/**/coverage/clover.xml"
+                  threshold_warning: 70
