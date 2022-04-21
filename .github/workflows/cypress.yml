@@ -33,7 +33,7 @@ jobs:
               run: ls apps/ui/*
 
             - name: Monitor coverage
-              if: ! contains(github.event.pull_request.user.login, 'dependabot[bot]')
+              if: ${{ github.event_name == 'pull_request' }}
               uses: slavcodev/coverage-monitor-action@v1
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
