@@ -11,7 +11,7 @@
         "prebuild": "rm -rf dist && export NODE_ENV=production",
         "build": "tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
         "lint": "eslint src/**/*.ts",
-        "test:ci": "env-cmd -f ./.env.test jest --coverage",
+        "test:ci": "env-cmd -f ./.test.env jest --coverage",
         "test": "env-cmd -f ./.test.env jest --coverage --coverageReporters=\"text-summary\"",
         "gen-migrations": "env-cmd -f ./.development.env mikro-orm migration:create",
         "compose:up": "docker-compose --env-file ./.development.env up -d",
