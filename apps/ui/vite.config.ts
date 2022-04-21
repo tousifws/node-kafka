@@ -25,9 +25,7 @@ export default defineConfig(() => ({
         istanbul({
             cypress: true,
             include: "src/*",
-            exclude: ["node_modules", "test/"],
-            extension: [".js", ".ts", ".tsx"],
-            requireEnv: true,
+            exclude: ["node_modules", "cypress/"],
         }),
     ],
 }));

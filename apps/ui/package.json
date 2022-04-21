@@ -7,7 +7,7 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "export NODE_ENV=development && vite --host",
+        "dev": "export NODE_ENV=development && vite",
         "prebuild": "rm -rf dist",
         "build": "export NODE_ENV=production && tsc && vite build",
         "preview": "vite preview --port 3000",
@@ -28,7 +28,6 @@
         "autoprefixer": "^10.4.2",
         "config": "*",
         "cypress": "^9.5.3",
-        "cypress-autorecord": "^3.1.2",
         "cypress-jest-adapter": "^0.1.1",
         "eslint": "^8.6.0",
         "postcss": "^8.4.5",

@@ -1,6 +1,6 @@
 {
     "baseUrl": "http://localhost:3000",
-    "fileServerFolder": "dist",
+    "componentFolder": "src",
     "video": false,
     "autorecord": {
         "interceptPattern": "**/graphql"

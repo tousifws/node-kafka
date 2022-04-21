@@ -4096,11 +4096,6 @@ csstype@^3.0.10, csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
   integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
-cypress-autorecord@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/cypress-autorecord/-/cypress-autorecord-3.1.2.tgz#296e74fc40f25bc1b8064f0e2fd255e75ba8b089"
-  integrity sha512-BNI4E2DBIbzJgWBU/8vJ6E34PndO3DTsT5jJe7iAISNqwnsX6dirpd0tE0xo0jpB63oBMvqmOptaODoJQ9PVpg==
-
 cypress-jest-adapter@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/cypress-jest-adapter/-/cypress-jest-adapter-0.1.1.tgz#d1aa9d84393b6a5007022d1d33b3cdd3ce9672af"

@@ -6,7 +6,9 @@
 /// <reference types="cypress" />
 import "./commands";
 
-import "cypress-jest-adapter";
 import "@cypress/code-coverage/support";
+import "cypress-jest-adapter";
+
 import { configure } from "@testing-library/cypress";
+
 configure({ testIdAttribute: "data-test" });
