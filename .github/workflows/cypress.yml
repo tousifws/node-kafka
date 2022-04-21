@@ -29,12 +29,10 @@ jobs:
                   name: cypress-screenshots
                   path: apps/ui/cypress/screenshots
 
-            - name: List
-              run: ls apps/ui/*
-
             - name: Monitor coverage
               uses: slavcodev/coverage-monitor-action@v1
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   coverage_path: "apps/ui/coverage/clover.xml"
+                  comment_footer: false
                   # threshold_warning: 70

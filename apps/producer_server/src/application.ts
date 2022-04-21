@@ -78,7 +78,6 @@ export class Application {
     }
 
     private routes() {
-        console.log("Hello");
         this.instance.get("/", async (_request, _reply) => {
             return { message: "God speed" };
         });
