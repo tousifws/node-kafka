@@ -30,7 +30,7 @@ jobs:
                   path: apps/ui/cypress/screenshots
 
             - name: Generate NYC report
-              working-directory: apps/ui
+              working-directory: ./apps/ui
               run: |
                   npx nyc report \
                     --reporter json-summary \
@@ -40,4 +40,5 @@ jobs:
             - name: Report NYC coverage
               uses: sidx1024/report-nyc-coverage-github-action@v1.1
               with:
-                  coverage_file: "apps/ui/nyc-coverage-report/coverage-summary.json"
+                  coverage_file: "nyc-coverage-report/coverage-summary.json"
+                  sources_base_path: "apps/ui"
