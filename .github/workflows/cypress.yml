@@ -38,11 +38,9 @@ jobs:
                     --exclude-after-remap false
 
             - name: Read nyc-coverage-report
-              working-directory: ./apps/ui
-              run: cat nyc-coverage-report/coverage-summary.json
+              run: cat apps/ui/nyc-coverage-report/coverage-summary.json
 
             - name: Report NYC coverage
               uses: sidx1024/report-nyc-coverage-github-action@v1.1
               with:
-                  coverage_file: "nyc-coverage-report/coverage-summary.json"
-                  sources_base_path: "apps/ui"
+                  coverage_file: "apps/ui/nyc-coverage-report/coverage-summary.json"
