@@ -1,6 +1,9 @@
 name: Cypress Tests
 
 on:
+    push:
+        branches:
+            - main
     pull_request:
         paths:
             - "apps/ui/**"
@@ -30,6 +33,7 @@ jobs:
                   path: apps/ui/cypress/screenshots
 
             - name: Monitor coverage
+              if: ${{ github.event_name == 'pull_request' }}
               uses: slavcodev/coverage-monitor-action@v1
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
