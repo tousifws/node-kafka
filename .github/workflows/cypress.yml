@@ -2,6 +2,7 @@ name: Cypress Tests
 
 on:
     push:
+    pull_request:
         paths:
             - "apps/ui/**"
             - ".github/workflows/cypress.yml"
@@ -30,13 +31,18 @@ jobs:
                   path: apps/ui/cypress/screenshots
 
             - name: Generate NYC report
-              id: get-comment-body
               working-directory: ./apps/ui
               run: |
-                  body=$(npx nyc report --reporter=text-summary)
-                  echo ::set-output name=body::$body
+                  npx nyc report \
+                    --reporter json-summary \
+                    --report-dir nyc-coverage-report \
+                    --exclude-after-remap false
 
-            - name: Create commit comment
-              uses: peter-evans/commit-comment@v2
+            - name: Read nyc-coverage-report
+              working-directory: ./apps/ui
+              run: cat nyc-coverage-report/coverage-summary.json
+
+            - name: Report NYC coverage
+              uses: sidx1024/report-nyc-coverage-github-action@v1.1
               with:
-                  body: ${{ steps.get-comment-body.outputs.body }}
+                  coverage_file: "apps/ui/nyc-coverage-report/coverage-summary.json"
