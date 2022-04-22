@@ -32,15 +32,10 @@ jobs:
             - name: Generate NYC report
               working-directory: ./apps/ui
               run: |
-                  npx nyc report \
-                    --reporter json-summary \
-                    --report-dir nyc-coverage-report \
-                    --exclude-after-remap false
+                  body=$(npx nyc report --reporter=text-summary)
+                  echo ::set-output name=body::$body
 
-            - name: Read nyc-coverage-report
-              run: cat apps/ui/nyc-coverage-report/coverage-summary.json
-
-            - name: Report NYC coverage
-              uses: sidx1024/report-nyc-coverage-github-action@v1.1
+            - name: Create commit comment
+              uses: peter-evans/commit-comment@v2
               with:
-                  coverage_file: "apps/ui/nyc-coverage-report/coverage-summary.json"
+                  body: ${{ steps.get-comment-body.outputs.body }}
