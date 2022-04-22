@@ -29,10 +29,15 @@ jobs:
                   name: cypress-screenshots
                   path: apps/ui/cypress/screenshots
 
-            - name: Monitor coverage
-              uses: slavcodev/coverage-monitor-action@v1
+            - name: Generate NYC report
+              working-directory: apps/ui
+              run: |
+                  npx nyc report \
+                    --reporter json-summary \
+                    --report-dir nyc-coverage-report \
+                    --exclude-after-remap false
+
+            - name: Report NYC coverage
+              uses: sidx1024/report-nyc-coverage-github-action@v1.1
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  coverage_path: "apps/ui/coverage/clover.xml"
-                  comment_footer: false
-                  # threshold_warning: 70
+                  coverage_file: "apps/ui/nyc-coverage-report/coverage-summary.json"
