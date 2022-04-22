@@ -30,6 +30,7 @@ jobs:
                   path: apps/ui/cypress/screenshots
 
             - name: Generate NYC report
+              id: get-comment-body
               working-directory: ./apps/ui
               run: |
                   body=$(npx nyc report --reporter=text-summary)
